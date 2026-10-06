@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Jumping
+        // Jumping. Tries to prevent double jumps by checking if the player is grounded.
         if (Keyboard.current.spaceKey.wasPressedThisFrame && IsGrounded())
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
