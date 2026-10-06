@@ -5,6 +5,8 @@ public class DoorOpener : MonoBehaviour
 {
     private Animator doorAnimator;
 
+    public AudioSource audioSource;
+
     void Start()
     {
         // Get the Animator component attached to the same GameObject as this script
@@ -20,6 +22,11 @@ public class DoorOpener : MonoBehaviour
             {
                 // Trigger the Door_Open animation
                 doorAnimator.SetTrigger("Door_Open");
+            }
+            if (audioSource != null)
+            {
+                audioSource.Play();
+                audioSource = null; // Set audioSource to null to prevent it from playing again
             }
         }
     }
