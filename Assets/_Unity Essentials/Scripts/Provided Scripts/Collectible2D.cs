@@ -8,6 +8,14 @@ public class Collectible2D : MonoBehaviour
     public float rotationSpeed = 0.5f;
     public GameObject onCollectEffect;
 
+    public AudioSource audioSource;
+
+    void Start()
+    {
+        // Get the AudioSource component attached to the collectible
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +34,13 @@ public class Collectible2D : MonoBehaviour
 
             // Instantiate the particle effect
             Instantiate(onCollectEffect, transform.position, transform.rotation);
+
+            // Play the collect sound
+            if(audioSource != null)
+            {
+                audioSource.Play();
+                //audioSource = null; // Set audioSource to null to prevent it from playing again
+            }
         }
 
         
